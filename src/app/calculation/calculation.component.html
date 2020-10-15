@@ -1,0 +1,42 @@
+<div style="margin: auto" class="container">
+    <div class="row">
+      <div class="col-md-3"></div><br>
+      <div class="col-md-6">
+        <h1 class="page-title">Monthly Installment Form</h1>
+        <form (ngSubmit)="onSubmit()" [formGroup]="rental">
+          <div class="form-group">
+            <label>Amount</label>
+            <input type="number" class="form-control" formControlName="amount" />
+          </div>
+  
+          <div class="form-group">
+            <label>Rate</label>
+            <input type="number" class="form-control" formControlName="rate" />
+          </div>
+  
+          <div class="form-group">
+            <label>Duration </label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="duration"
+            />
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Calculate Rental</button>
+          <button class="btn btn-primary" style="float: right" type="reset">
+            Reset
+          </button>
+        </form>
+        <div style="float: center;">
+          <br /><br />
+          <label><h4>Monthly Installment</h4></label>
+          <div><h3 style="color: blue;">{{ installment}}</h3></div>
+        </div>
+        <div>
+            <button [routerLink]="['/details']" routerLinkActive="router-link-active" >ViewDetails</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

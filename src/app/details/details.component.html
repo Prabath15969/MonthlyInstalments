@@ -1,0 +1,23 @@
+<div class="container">
+    <a class="button" [routerLink]="['/']" routerLinkActive="router-link-active" > Back to Calculation</a>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Rental No</th>
+            <th scope="col">Date</th>
+            <th scope="col">Amount paid</th>
+            <th scope="col">Amount to be paid</th>
+          </tr>
+        </thead>
+        <tbody style="text-align:center">
+          <tr *ngFor="let detail of detailList">
+              <td>{{detail.rental_no}}</td>
+              <td>{{detail.date | date | uppercase}}</td>
+              <td>{{detail.amount_paid}}</td>
+              <td>{{detail.amount_to_be_paid}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+  
+  
