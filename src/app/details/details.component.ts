@@ -3,7 +3,7 @@ import { DetailsServiceService } from "../service/details-service.service";
 
 export class Detail {
   public rental_no: number;
-  public date: Date;
+  public date: any;
   public amount_paid: number;
   public amount_to_be_paid: number;
 }
@@ -41,12 +41,12 @@ export class DetailsComponent implements OnInit {
 
     do {
       console.log("while" + i);
-      date.setMonth(date.getMonth() + 1);
+      date.setMonth(date.getMonth()+1);
 
       let rowData = new Detail();
 
       rowData.rental_no = i;
-      rowData.date = date;
+      rowData.date = date.toDateString();
       rowData.amount_paid = +paidAmount.toFixed(3);
       rowData.amount_to_be_paid = +(this.amount - paidAmount).toFixed(3);
 
