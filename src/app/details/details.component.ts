@@ -1,9 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { DetailsServiceService } from "../service/details-service.service";
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 export class Detail {
   public rental_no: number;
   public date: any;
+  public monthly : number;
   public amount_paid: number;
   public amount_to_be_paid: number;
 }
@@ -12,6 +21,14 @@ export class Detail {
   selector: "app-details",
   templateUrl: "./details.component.html",
   styleUrls: ["./details.component.scss"],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(2000)),
+    ]),
+  ]
 })
 export class DetailsComponent implements OnInit {
   detailList: Detail[] = [];
@@ -34,7 +51,7 @@ export class DetailsComponent implements OnInit {
   }
 
   viewDetails() {
-    let i = 0;
+    let i = 1;
     let date = new Date();
 
     let paidAmount = this.monthlyInstallment;
@@ -47,6 +64,7 @@ export class DetailsComponent implements OnInit {
 
       rowData.rental_no = i;
       rowData.date = date.toDateString();
+      rowData.monthly = this.monthlyInstallment;
       rowData.amount_paid = +paidAmount.toFixed(3);
       rowData.amount_to_be_paid = +(this.amount - paidAmount).toFixed(3);
 
